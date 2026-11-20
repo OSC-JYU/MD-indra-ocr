@@ -1,0 +1,128 @@
+{
+  "id": "md-indra-ocr",
+  "adapter": "elg",
+  "name": "Indra OCR",
+  "description": "Fast CPU-only OCR for images and PDFs (printed text, handwriting, 80+ languages, any page angle) with layout-aware output. NOTE: licence is NOT open source license!",
+  "category": "ml",
+  "source_url": "https://github.com/datalab-to/indra",
+
+  "local_url": "http://localhost:9013",
+
+  "supported_types": ["image"],
+  "supported_formats": ["png", "jpg", "jpeg", "tiff", "tif", "bmp", "webp", "pdf"],
+
+  "tasks": {
+    "ocr_markdown": {
+      "name": "Image to Markdown",
+      "description": "Recognise text and page layout (headings, lists, tables) and write it as Markdown",
+      "behaviour": "one-to-one",
+      "params": {
+        "mode": "auto",
+        "math": false,
+        "keep_furniture": false,
+        "max_pages": 0
+      },
+      "params_help": {
+        "mode": {
+          "name": "PDF text source",
+          "help": "For PDFs: use the embedded text layer where it is reliable and OCR the rest (automatic), always OCR every page, or only use the embedded text. Images are always OCRed.",
+          "display": "dropdown",
+          "default": "auto",
+          "values": {
+            "auto": "Automatic",
+            "ocr": "Always OCR",
+            "text": "Embedded text only"
+          }
+        },
+        "math": {
+          "name": "Math as LaTeX",
+          "help": "Write formulas as LaTeX. Slower on pages with math.",
+          "display": "checkbox",
+          "default": false
+        },
+        "keep_furniture": {
+          "name": "Keep page headers and footers",
+          "help": "Keep running headers, footers and page numbers in the Markdown.",
+          "display": "checkbox",
+          "default": false
+        },
+        "max_pages": {
+          "name": "Max pages",
+          "help": "Read at most this many pages of a PDF. 0 reads all pages.",
+          "display": "textinput",
+          "default": 0
+        }
+      }
+    },
+    "ocr_text": {
+      "name": "Image to text",
+      "description": "Recognise text and write it as plain text, one line per detected line in reading order",
+      "behaviour": "one-to-one",
+      "params": {
+        "mode": "auto",
+        "max_pages": 0
+      },
+      "params_help": {
+        "mode": {
+          "name": "PDF text source",
+          "help": "For PDFs: use the embedded text layer where it is reliable and OCR the rest (automatic), always OCR every page, or only use the embedded text. Images are always OCRed.",
+          "display": "dropdown",
+          "default": "auto",
+          "values": {
+            "auto": "Automatic",
+            "ocr": "Always OCR",
+            "text": "Embedded text only"
+          }
+        },
+        "max_pages": {
+          "name": "Max pages",
+          "help": "Read at most this many pages of a PDF. 0 reads all pages.",
+          "display": "textinput",
+          "default": 0
+        }
+      }
+    },
+    "ocr_json": {
+      "name": "Image to OCR data (JSON)",
+      "description": "Recognise text and write lines, bounding boxes, layout blocks and confidences as JSON",
+      "behaviour": "one-to-one",
+      "params": {
+        "mode": "auto",
+        "math": false,
+        "keep_furniture": false,
+        "max_pages": 0
+      },
+      "params_help": {
+        "mode": {
+          "name": "PDF text source",
+          "help": "For PDFs: use the embedded text layer where it is reliable and OCR the rest (automatic), always OCR every page, or only use the embedded text. Images are always OCRed.",
+          "display": "dropdown",
+          "default": "auto",
+          "values": {
+            "auto": "Automatic",
+            "ocr": "Always OCR",
+            "text": "Embedded text only"
+          }
+        },
+        "math": {
+          "name": "Math as LaTeX",
+          "help": "Write formulas as LaTeX. Slower on pages with math.",
+          "display": "checkbox",
+          "default": false
+        },
+        "keep_furniture": {
+          "name": "Keep page headers and footers",
+          "help": "Keep running headers, footers and page numbers in the Markdown field.",
+          "display": "checkbox",
+          "default": false
+        },
+        "max_pages": {
+          "name": "Max pages",
+          "help": "Read at most this many pages of a PDF. 0 reads all pages.",
+          "display": "textinput",
+          "default": 0
+        }
+      }
+    }
+  }
+}
